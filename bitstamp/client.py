@@ -352,6 +352,15 @@ class Trading(Public):
         url = self._construct_url("buy/market/", base, quote)
         return self._post(url, data=data, return_json=True, version=2)
 
+    def buy_instant_order(self, amount, base="btc", quote="usd"):
+        """
+        Order to buy amount of bitcoins for market price.
+        """
+        data = {'amount': amount}
+        url = self._construct_url("buy/instant/", base, quote)
+        return self._post(url, data=data, return_json=True, version=2)
+
+
     def sell_limit_order(self, amount, price, base="btc", quote="usd", limit_price=None, ioc_order=False):
         """
         Order to sell amount of bitcoins for specified price.
